@@ -26,9 +26,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/front/**").permitAll()
-                .antMatchers("/api/admin/**").hasRole(AppUserRole.ADMIN.name())
+                .antMatchers("/admin/api/**").hasRole(AppUserRole.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -47,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails lindaUser = User.builder()
                 .username("linda")
                 .password(passwordEncoder.encode("password123"))
-                .roles(AppUserRole.STUDENT.name())
+                .roles(AppUserRole.USER.name())
                 .build();
 
         return new InMemoryUserDetailsManager(
