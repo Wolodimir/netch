@@ -1,5 +1,6 @@
 package com.team.netch.frontapi.textContent;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ public class TextContentController {
     }
 
     @GetMapping("allText")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<TextContent> allTextContent(){
         return textContentService.getAllTextContent();
     }
