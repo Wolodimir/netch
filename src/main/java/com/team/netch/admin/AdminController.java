@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public String adminPage(){
         return "Something administrative";
     }

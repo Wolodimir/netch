@@ -20,7 +20,6 @@ public class TextContentController {
     }
 
     @GetMapping("allText")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<TextContent> allTextContent(){
         return textContentService.getAllTextContent();
     }
