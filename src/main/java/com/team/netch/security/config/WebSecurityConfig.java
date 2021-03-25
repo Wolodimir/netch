@@ -1,6 +1,5 @@
 package com.team.netch.security.config;
 
-import com.team.netch.appUser.AppUserRole;
 import com.team.netch.appUser.AppUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,33 +9,30 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final PasswordEncoder passwordEncoder;
     private final AppUserService appUserService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public WebSecurityConfig(PasswordEncoder passwordEncoder, AppUserService appUserService) {
-        this.passwordEncoder = passwordEncoder;
+    public WebSecurityConfig(AppUserService appUserService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.appUserService = appUserService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/front/**").permitAll()
-                .antMatchers("/admin/api/**").hasRole(AppUserRole.ADMIN.name())
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/api/registration/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .httpBasic();
+                .formLogin();
     }
 
     @Override
@@ -47,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder);
+        provider.setPasswordEncoder(bCryptPasswordEncoder);
         provider.setUserDetailsService(appUserService);
         return provider;
     }
