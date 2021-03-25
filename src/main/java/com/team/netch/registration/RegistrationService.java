@@ -35,6 +35,7 @@ public class RegistrationService {
         if(!isValidEmail){
             throw new IllegalStateException("email not valid");
         }
+        //Возвращает токен и одновременно добавляет пользователя
         String token = appUserService.signUpUser(
                 new AppUser(
                         request.getFirstName(),
@@ -47,7 +48,7 @@ public class RegistrationService {
         //verification link
         String link = "http://localhost:8080/api/registration/confirm?token=" + token;
 
-        emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
+        //emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
         return token;
     }
 
@@ -67,7 +68,7 @@ public class RegistrationService {
         }
 
         confirmationTokenService.setConfirmedAt(token);
-        appUserService.enableUser(confirmationToken.getAppUser().getEmail());
+        //appUserService.enableUser(confirmationToken.getAppUser().getEmail());
         return "confirmed";
     }
     private String buildEmail(String name, String link) {
