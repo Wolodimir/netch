@@ -1,7 +1,7 @@
 package com.team.netch.security.config;
 
-import com.team.netch.auth.AppUserService;
-import com.team.netch.security.AppUserRole;
+import com.team.netch.appUser.AppUserRole;
+import com.team.netch.appUser.AppUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
