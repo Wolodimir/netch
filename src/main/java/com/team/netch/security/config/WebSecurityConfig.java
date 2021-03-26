@@ -1,5 +1,6 @@
 package com.team.netch.security.config;
 
+import com.team.netch.appUser.AppUserRole;
 import com.team.netch.appUser.AppUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/registration/**").permitAll()
+                .antMatchers("/admin/api/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin();
