@@ -2,6 +2,7 @@ package com.team.netch.security.config;
 
 import com.team.netch.appUser.AppUserRole;
 import com.team.netch.appUser.AppUserService;
+import com.team.netch.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
@@ -29,12 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
                 .antMatchers("/api/registration/**").permitAll()
                 .antMatchers("/admin/api/**").hasAnyAuthority("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin();
+                .anyRequest().authenticated();
     }
 
     @Override
