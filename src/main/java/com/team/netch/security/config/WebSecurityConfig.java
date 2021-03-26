@@ -2,6 +2,7 @@ package com.team.netch.security.config;
 
 import com.team.netch.appUser.AppUserRole;
 import com.team.netch.appUser.AppUserService;
+import com.team.netch.jwt.JwtTokenVerifier;
 import com.team.netch.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,9 +34,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                //register the filters
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
+                .addFilterAfter(new JwtTokenVerifier(), JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeRequests()
+                //add the admin authority
                 .antMatchers("/api/registration/**").permitAll()
+                .antMatchers("/api/front/**").permitAll()
                 .antMatchers("/admin/api/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();
     }
