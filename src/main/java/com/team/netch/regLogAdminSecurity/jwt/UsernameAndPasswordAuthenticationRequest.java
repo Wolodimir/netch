@@ -1,4 +1,4 @@
-package com.team.netch.jwt;
+package com.team.netch.regLogAdminSecurity.jwt;
 
 public class UsernameAndPasswordAuthenticationRequest {
 

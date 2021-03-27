@@ -1,4 +1,4 @@
-package com.team.netch.jwt;
+package com.team.netch.regLogAdminSecurity.jwt;
 
 import io.jsonwebtoken.security.Keys;
 import org.springframework.context.annotation.Bean;

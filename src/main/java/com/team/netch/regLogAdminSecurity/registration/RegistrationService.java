@@ -1,12 +1,12 @@
-package com.team.netch.registration;
+package com.team.netch.regLogAdminSecurity.registration;
 
-import com.team.netch.appUser.AppUser;
-import com.team.netch.appUser.AppUserRepo;
-import com.team.netch.appUser.AppUserRole;
-import com.team.netch.appUser.AppUserService;
-import com.team.netch.email.EmailSender;
-import com.team.netch.registration.token.ConfirmationToken;
-import com.team.netch.registration.token.ConfirmationTokenService;
+import com.team.netch.regLogAdminSecurity.appUser.AppUser;
+import com.team.netch.regLogAdminSecurity.appUser.AppUserRepo;
+import com.team.netch.regLogAdminSecurity.appUser.AppUserRole;
+import com.team.netch.regLogAdminSecurity.appUser.AppUserService;
+import com.team.netch.regLogAdminSecurity.email.EmailSender;
+import com.team.netch.regLogAdminSecurity.registration.token.ConfirmationToken;
+import com.team.netch.regLogAdminSecurity.registration.token.ConfirmationTokenService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

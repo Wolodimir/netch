@@ -1,4 +1,4 @@
-package com.team.netch.registration;
+package com.team.netch.regLogAdminSecurity.registration;
 
 import org.springframework.stereotype.Service;
 

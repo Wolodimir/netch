@@ -1,4 +1,4 @@
-package com.team.netch.email;
+package com.team.netch.regLogAdminSecurity.email;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

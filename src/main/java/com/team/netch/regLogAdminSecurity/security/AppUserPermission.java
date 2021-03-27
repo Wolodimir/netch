@@ -1,4 +1,4 @@
-package com.team.netch.security;
+package com.team.netch.regLogAdminSecurity.security;
 
 public class AppUserPermission {
 

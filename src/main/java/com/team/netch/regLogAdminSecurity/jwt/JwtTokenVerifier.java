@@ -1,4 +1,4 @@
-package com.team.netch.jwt;
+package com.team.netch.regLogAdminSecurity.jwt;
 
 import com.google.common.base.Strings;
 import io.jsonwebtoken.Claims;

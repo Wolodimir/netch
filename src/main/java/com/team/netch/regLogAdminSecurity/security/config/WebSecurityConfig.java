@@ -1,9 +1,9 @@
-package com.team.netch.security.config;
+package com.team.netch.regLogAdminSecurity.security.config;
 
-import com.team.netch.appUser.AppUserService;
-import com.team.netch.jwt.JwtConfig;
-import com.team.netch.jwt.JwtTokenVerifier;
-import com.team.netch.jwt.JwtUsernameAndPasswordAuthenticationFilter;
+import com.team.netch.regLogAdminSecurity.appUser.AppUserService;
+import com.team.netch.regLogAdminSecurity.jwt.JwtConfig;
+import com.team.netch.regLogAdminSecurity.jwt.JwtTokenVerifier;
+import com.team.netch.regLogAdminSecurity.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;

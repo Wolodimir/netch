@@ -1,4 +1,4 @@
-package com.team.netch.appUser;
+package com.team.netch.regLogAdminSecurity.appUser;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

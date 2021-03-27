@@ -1,8 +1,8 @@
-package com.team.netch.appUser;
+package com.team.netch.regLogAdminSecurity.appUser;
 
 
-import com.team.netch.registration.token.ConfirmationToken;
-import com.team.netch.registration.token.ConfirmationTokenService;
+import com.team.netch.regLogAdminSecurity.registration.token.ConfirmationToken;
+import com.team.netch.regLogAdminSecurity.registration.token.ConfirmationTokenService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

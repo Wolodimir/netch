@@ -1,4 +1,4 @@
-package com.team.netch.email;
+package com.team.netch.regLogAdminSecurity.email;
 
 
 public interface EmailSender {

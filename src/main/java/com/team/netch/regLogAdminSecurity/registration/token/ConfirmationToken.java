@@ -1,6 +1,6 @@
-package com.team.netch.registration.token;
+package com.team.netch.regLogAdminSecurity.registration.token;
 
-import com.team.netch.appUser.AppUser;
+import com.team.netch.regLogAdminSecurity.appUser.AppUser;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
