@@ -1,6 +1,7 @@
 package com.team.netch.registration;
 
 import com.team.netch.appUser.AppUser;
+import com.team.netch.appUser.AppUserRepo;
 import com.team.netch.appUser.AppUserRole;
 import com.team.netch.appUser.AppUserService;
 import com.team.netch.email.EmailSender;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class RegistrationService {
@@ -18,15 +20,17 @@ public class RegistrationService {
     private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
+    private final AppUserRepo appUserRepo;
 
     public RegistrationService(AppUserService appUserService,
                                EmailValidator emailValidator,
                                ConfirmationTokenService confirmationTokenService,
-                               EmailSender emailSender) {
+                               EmailSender emailSender, AppUserRepo appUserRepo) {
         this.appUserService = appUserService;
         this.emailValidator = emailValidator;
         this.confirmationTokenService = confirmationTokenService;
         this.emailSender = emailSender;
+        this.appUserRepo = appUserRepo;
     }
 
     //request is a class been made just for it
@@ -42,7 +46,7 @@ public class RegistrationService {
                         request.getLastName(),
                         request.getEmail(),
                         request.getPassword(),
-                        AppUserRole.ADMIN
+                        AppUserRole.USER
                 )
         );
         //verification link
@@ -50,6 +54,18 @@ public class RegistrationService {
 
         //emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
         return token;
+    }
+    public String riseUserRole(String email, String adminKey){
+        //TODO change location of this key variable
+        if(adminKey.equals("zsldfiysjkfhasudfasdfgquwegfasnzcxv;kqhwerjjasd;fkjb")){
+            Optional<AppUser> userByEmail = appUserRepo.findByEmail(email);
+            AppUser appUser = userByEmail.get();
+            appUser.setAppUserRole(AppUserRole.ADMIN);
+            appUserRepo.save(appUser);
+            return "risen";
+        }else {
+            return "Key is not right";
+        }
     }
 
     @Transactional

@@ -17,6 +17,11 @@ public class RegistrationController {
         return registrationService.register(registrationRequest);
     }
 
+    @PostMapping("rise")
+    public String riseUser(@RequestParam String email, @RequestParam String adminKey){
+        return registrationService.riseUserRole(email, adminKey);
+    }
+
     /*@GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token){
         return registrationService.confirmToken(token);
