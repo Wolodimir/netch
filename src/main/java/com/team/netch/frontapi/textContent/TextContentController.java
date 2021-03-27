@@ -11,6 +11,10 @@ import java.util.List;
 @RequestMapping(path = "api/front")
 @CrossOrigin
 public class TextContentController {
+    /*
+    * This controller is public and have just GET methods.
+    * POST logic is in the ADMIN controller
+    * */
 
     private final TextContentService textContentService;
 

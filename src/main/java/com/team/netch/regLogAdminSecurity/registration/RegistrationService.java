@@ -7,6 +7,7 @@ import com.team.netch.regLogAdminSecurity.appUser.AppUserService;
 import com.team.netch.regLogAdminSecurity.email.EmailSender;
 import com.team.netch.regLogAdminSecurity.registration.token.ConfirmationToken;
 import com.team.netch.regLogAdminSecurity.registration.token.ConfirmationTokenService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,9 @@ import java.util.Optional;
 
 @Service
 public class RegistrationService {
+
+    @Value("${adminProperties.adKey}")
+    private String adKey;
 
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
@@ -56,8 +60,7 @@ public class RegistrationService {
         return token;
     }
     public String riseUserRole(String email, String adminKey){
-        //TODO change location of this key variable
-        if(adminKey.equals("zsldfiysjkfhasudfasdfgquwegfasnzcxv;kqhwerjjasd;fkjb")){
+        if(adminKey.equals(adKey)){
             Optional<AppUser> userByEmail = appUserRepo.findByEmail(email);
             AppUser appUser = userByEmail.get();
             appUser.setAppUserRole(AppUserRole.ADMIN);

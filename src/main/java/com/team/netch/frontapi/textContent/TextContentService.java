@@ -16,4 +16,7 @@ public class TextContentService {
         return textContentRepo.findAll();
     }
 
+    public void save(TextContent textContent) {
+        textContentRepo.save(textContent);
+    }
 }
