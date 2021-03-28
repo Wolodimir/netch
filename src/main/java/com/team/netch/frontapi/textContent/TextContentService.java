@@ -19,4 +19,8 @@ public class TextContentService {
     public void save(TextContent textContent) {
         textContentRepo.save(textContent);
     }
+
+    public List<TextContent> getTextContentByName(String name) {
+        return textContentRepo.getTextContentByName(name);
+    }
 }
