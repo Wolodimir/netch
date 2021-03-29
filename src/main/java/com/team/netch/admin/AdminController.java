@@ -1,10 +1,14 @@
 package com.team.netch.admin;
 
+import com.team.netch.feedback.Feedback;
+import com.team.netch.feedback.FeedbackService;
 import com.team.netch.frontapi.imageContent.ImageContentService;
 import com.team.netch.frontapi.textContent.TextContent;
 import com.team.netch.frontapi.textContent.TextContentService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "admin/api")
@@ -13,10 +17,12 @@ public class AdminController {
 
     private final TextContentService textContentService;
     private final ImageContentService imageContentService;
+    private final FeedbackService feedbackService;
 
-    public AdminController(TextContentService textContentService, ImageContentService imageContentService) {
+    public AdminController(TextContentService textContentService, ImageContentService imageContentService, FeedbackService feedbackService) {
         this.textContentService = textContentService;
         this.imageContentService = imageContentService;
+        this.feedbackService = feedbackService;
     }
 
     @GetMapping
@@ -66,9 +72,30 @@ public class AdminController {
     }
 
 
-
-
     /*_____________________________
      * END IMAGE CONTENT SECTION
      * _____________________________*/
+
+    /*_____________________________
+     * FEEDBACK SECTION
+     * _____________________________*/
+
+    @GetMapping(path = "feedback")
+    public List<Feedback> getActiveFeedback(){
+        return feedbackService.getAllActiveFeedback();
+    }
+
+    @DeleteMapping(path = "feedback/{id}")
+    public String deleteFeedback(@PathVariable Long id){
+        feedbackService.offFeedbackById(id);
+        return "" + id;
+    }
+
+
+    /*_____________________________
+     * END FEEDBACK SECTION
+     * _____________________________*/
+
+
+
 }

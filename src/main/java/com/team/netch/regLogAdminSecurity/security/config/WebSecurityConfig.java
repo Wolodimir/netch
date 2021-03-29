@@ -50,6 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //add the admin authority
                 .antMatchers("/api/registration/**").permitAll()
                 .antMatchers("/api/front/**").permitAll()
+                .antMatchers("/api/feedback/**").permitAll()
                 .antMatchers("/admin/api/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();
     }
