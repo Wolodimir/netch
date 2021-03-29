@@ -28,8 +28,16 @@ public class AdminController {
         textContentService.save(textContent);
         return "saved";
     }
-
     /*_____________________________
      * END TEXT CONTENT SECTION
      * _____________________________*/
+
+
+    /*_____________________________
+     * IMAGE CONTENT SECTION
+     * _____________________________*/
+
+
+
+
 }
