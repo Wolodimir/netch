@@ -12,6 +12,10 @@ public class TextContentService {
         this.textContentRepo = textContentRepo;
     }
 
+    public void deleteTextContentById(Long id){
+        textContentRepo.deleteById(id);
+    }
+
     public List<TextContent> getAllTextContent() {
         return textContentRepo.findAll();
     }
@@ -21,6 +25,6 @@ public class TextContentService {
     }
 
     public List<TextContent> getTextContentByName(String name) {
-        return textContentRepo.getTextContentByName(name);
+        return textContentRepo.findByName(name);
     }
 }

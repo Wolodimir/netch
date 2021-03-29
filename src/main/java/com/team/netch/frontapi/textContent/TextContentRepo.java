@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TextContentRepo extends JpaRepository<TextContent, Long> {
-    List<TextContent> getTextContentByName(String name);
+    List<TextContent> findByName(String name);
 }
