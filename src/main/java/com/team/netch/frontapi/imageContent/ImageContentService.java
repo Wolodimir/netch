@@ -4,6 +4,7 @@ import com.team.netch.amazon.AmazonClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +16,14 @@ public class ImageContentService {
     public ImageContentService(AmazonClient amazonClient, ImageContentRepo imageContentRepo) {
         this.amazonClient = amazonClient;
         this.imageContentRepo = imageContentRepo;
+    }
+
+    public List<ImageContent> getImageContentByName(String name){
+        return imageContentRepo.findByName(name);
+    }
+
+    public List<ImageContent> getAllImageContent(){
+        return imageContentRepo.findAll();
     }
 
     public void saveImageContent(MultipartFile multipartFile, String name, String header, String body){
