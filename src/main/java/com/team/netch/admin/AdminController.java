@@ -5,6 +5,8 @@ import com.team.netch.feedback.FeedbackService;
 import com.team.netch.frontapi.imageContent.ImageContentService;
 import com.team.netch.frontapi.textContent.TextContent;
 import com.team.netch.frontapi.textContent.TextContentService;
+import com.team.netch.regLogAdminSecurity.appUser.AppUser;
+import com.team.netch.regLogAdminSecurity.appUser.AppUserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,13 +20,16 @@ public class AdminController {
     private final TextContentService textContentService;
     private final ImageContentService imageContentService;
     private final FeedbackService feedbackService;
+    private final AppUserService appUserService;
 
     public AdminController(TextContentService textContentService,
                            ImageContentService imageContentService,
-                           FeedbackService feedbackService) {
+                           FeedbackService feedbackService,
+                           AppUserService appUserService) {
         this.textContentService = textContentService;
         this.imageContentService = imageContentService;
         this.feedbackService = feedbackService;
+        this.appUserService = appUserService;
     }
 
     @GetMapping
@@ -98,6 +103,17 @@ public class AdminController {
      * END FEEDBACK SECTION
      * _____________________________*/
 
+    /*_____________________________
+     * USERS SECTION
+     * _____________________________*/
 
+    @GetMapping(path = "users")
+    public List<AppUser> showUsers(){
+        return appUserService.showAllUsers();
+    }
+
+    /*_____________________________
+     * END USERS SECTION
+     * _____________________________*/
 
 }

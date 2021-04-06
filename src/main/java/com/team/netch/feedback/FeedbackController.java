@@ -15,7 +15,6 @@ public class FeedbackController {
 
     @PostMapping
     public void sendFeedback(@RequestBody Feedback feedback){
-        feedback.setActive(true);
         feedbackService.saveFeedback(feedback);
     }
 }

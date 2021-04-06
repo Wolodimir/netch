@@ -23,6 +23,11 @@ public class RegistrationController {
         return registrationService.riseUserRole(email, adminKey);
     }
 
+    @DeleteMapping("delete")
+    public String deleteUser(@RequestParam String email, @RequestParam String adminKey){
+        return registrationService.deleteUserByEmail(email, adminKey);
+    }
+
     /*@GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token){
         return registrationService.confirmToken(token);

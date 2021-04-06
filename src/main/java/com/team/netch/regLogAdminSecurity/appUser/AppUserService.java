@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -58,9 +59,14 @@ public class AppUserService implements UserDetailsService {
                 user
         );
 
-        confirmationTokenService.saveConfirmationToken(confirmationToken);
+        //No need to make confirmation token table
+        //confirmationTokenService.saveConfirmationToken(confirmationToken);
 
         return token;
+    }
+
+    public List<AppUser> showAllUsers() {
+        return appUserRepo.findAll();
     }
 
     /*public int enableUser(String email) {

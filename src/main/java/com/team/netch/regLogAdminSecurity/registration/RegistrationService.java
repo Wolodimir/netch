@@ -17,8 +17,11 @@ import java.util.Optional;
 @Service
 public class RegistrationService {
 
-    @Value("${adminProperties.adKey}")
-    private String adKey;
+    @Value("${adminProperties.riseUserKey}")
+    private String riseUserKey;
+
+    @Value("${adminProperties.deleteUserKey}")
+    private String deleteUserKey;
 
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
@@ -60,14 +63,25 @@ public class RegistrationService {
         return token;
     }
     public String riseUserRole(String email, String adminKey){
-        if(adminKey.equals(adKey)){
+        if(adminKey.equals(riseUserKey)){
             Optional<AppUser> userByEmail = appUserRepo.findByEmail(email);
             AppUser appUser = userByEmail.get();
             appUser.setAppUserRole(AppUserRole.ADMIN);
             appUserRepo.save(appUser);
             return "risen";
         }else {
-            return "Key is not right";
+            return "Key is not valid";
+        }
+    }
+
+    public String deleteUserByEmail(String email, String adminKey) {
+        if(adminKey.equals(deleteUserKey)){
+            Optional<AppUser> userByEmail = appUserRepo.findByEmail(email);
+            AppUser appUser = userByEmail.get();
+            appUserRepo.deleteById(appUser.getId());
+            return "deleted";
+        }else {
+            return "Key is not valid";
         }
     }
 
@@ -158,4 +172,5 @@ public class RegistrationService {
                 "\n" +
                 "</div></div>";
     }
+
 }
