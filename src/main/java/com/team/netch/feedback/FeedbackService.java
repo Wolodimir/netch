@@ -2,6 +2,7 @@ package com.team.netch.feedback;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -15,6 +16,7 @@ public class FeedbackService {
 
 
     public String saveFeedback(Feedback feedback){
+        feedback.setCreatedAt(LocalDateTime.now().withNano(0));
         feedbackRepo.save(feedback);
         return "saved";
     }

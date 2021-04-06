@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 public class Feedback {
@@ -15,8 +16,8 @@ public class Feedback {
     private String name;
     private String email;
     private String phone;
+    private LocalDateTime createdAt;
     private Boolean active = true;
-
 
     public Feedback(String name, String email, String phone) {
         this.name = name;
@@ -24,22 +25,39 @@ public class Feedback {
         this.phone = phone;
     }
 
-    public Feedback(String name, String email, String phone, Boolean active) {
+    public Feedback(String name, String email, String phone, LocalDateTime createdAt) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.createdAt = createdAt;
+    }
+
+    public Feedback(String name, String email, String phone, LocalDateTime createdAt, Boolean active) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.createdAt = createdAt;
         this.active = active;
     }
 
-    public Feedback(Long id, String name, String email, String phone, Boolean active) {
+    public Feedback(Long id, String name, String email, String phone, LocalDateTime createdAt, Boolean active) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.createdAt = createdAt;
         this.active = active;
     }
 
     public Feedback() {
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Boolean getActive() {
