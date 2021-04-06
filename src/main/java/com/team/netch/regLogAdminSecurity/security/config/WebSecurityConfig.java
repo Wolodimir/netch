@@ -51,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 //add the admin authority
                 .antMatchers("/api/registration/**").permitAll()
+                .antMatchers("/login/**").permitAll()
                 .antMatchers("/api/front/**").permitAll()
                 .antMatchers("/api/feedback/**").permitAll()
                 .antMatchers("/admin/api/**").hasAnyAuthority("ADMIN")

@@ -19,7 +19,9 @@ public class AdminController {
     private final ImageContentService imageContentService;
     private final FeedbackService feedbackService;
 
-    public AdminController(TextContentService textContentService, ImageContentService imageContentService, FeedbackService feedbackService) {
+    public AdminController(TextContentService textContentService,
+                           ImageContentService imageContentService,
+                           FeedbackService feedbackService) {
         this.textContentService = textContentService;
         this.imageContentService = imageContentService;
         this.feedbackService = feedbackService;
@@ -43,7 +45,7 @@ public class AdminController {
     @DeleteMapping(path = "textContent/{id}")
     public String deleteTextContent(@PathVariable Long id){
         textContentService.deleteTextContentById(id);
-        return "deleted";
+        return "deleted " + id;
     }
 
     /*_____________________________
@@ -68,7 +70,7 @@ public class AdminController {
     @DeleteMapping(path = "imageContent/{id}")
     public String deleteImageContent(@PathVariable Long id){
         imageContentService.deleteImageContentById(id);
-        return "deleted";
+        return "deleted " + id;
     }
 
 
@@ -88,7 +90,7 @@ public class AdminController {
     @DeleteMapping(path = "feedback/{id}")
     public String deleteFeedback(@PathVariable Long id){
         feedbackService.offFeedbackById(id);
-        return "" + id;
+        return "deleted " + id;
     }
 
 
