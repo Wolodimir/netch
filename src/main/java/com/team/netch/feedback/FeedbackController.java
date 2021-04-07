@@ -14,7 +14,8 @@ public class FeedbackController {
     }
 
     @PostMapping
-    public void sendFeedback(@RequestBody Feedback feedback){
+    public String sendFeedback(@RequestBody Feedback feedback){
         feedbackService.saveFeedback(feedback);
+        return "Спасибо за заказ обратной связи";
     }
 }

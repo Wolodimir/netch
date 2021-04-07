@@ -2,8 +2,11 @@ package com.team.netch.feedback;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class FeedbackService {
@@ -16,8 +19,14 @@ public class FeedbackService {
 
 
     public String saveFeedback(Feedback feedback){
-        feedback.setCreatedAt(LocalDateTime.now().withNano(0));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss yyyy-MM-dd", Locale.US);
+        LocalDateTime strLocalDate = LocalDateTime.now();
+        String localDate = strLocalDate.format(formatter);
+        feedback.setCreatedAt(localDate);
+
         feedbackRepo.save(feedback);
+
         return "saved";
     }
 

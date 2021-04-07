@@ -3,7 +3,9 @@ package com.team.netch.brief;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -16,7 +18,11 @@ public class BriefService {
     }
 
     public void save(Brief brief) {
-        brief.setCreatedAt(LocalDateTime.now().withNano(0));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss yyyy-MM-dd", Locale.US);
+        LocalDateTime strLocalDate = LocalDateTime.now();
+        String localDate = strLocalDate.format(formatter);
+        brief.setCreatedAt(localDate);
+
         briefRepo.save(brief);
     }
 

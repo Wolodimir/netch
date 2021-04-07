@@ -3,8 +3,6 @@ package com.team.netch.brief;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 public class Brief {
@@ -33,13 +31,13 @@ public class Brief {
     private String logo;
     private String content;
     private String sections;
-    private LocalDateTime createdAt;
+    private String createdAt;
     private Boolean status = true;
 
     public Brief(String name, String email, String phone, String goals, String requirements,
                  String results, String limitations, String assumptions, String kindOfActivity,
                  String design, String site, String products, String services, String logo,
-                 String content, String sections, LocalDateTime createdAt) {
+                 String content, String sections, String createdAt) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -62,7 +60,7 @@ public class Brief {
     public Brief(String name, String email, String phone, String goals, String requirements,
                  String results, String limitations, String assumptions, String kindOfActivity,
                  String design, String site, String products, String services, String logo,
-                 String content, String sections, LocalDateTime createdAt, Boolean status) {
+                 String content, String sections, String createdAt, Boolean status) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -86,7 +84,7 @@ public class Brief {
     public Brief(Long id, String name, String email, String phone, String goals,
                  String requirements, String results, String limitations, String assumptions,
                  String kindOfActivity, String design, String site, String products, String services,
-                 String logo, String content, String sections, LocalDateTime createdAt, Boolean status) {
+                 String logo, String content, String sections, String createdAt, Boolean status) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -111,11 +109,11 @@ public class Brief {
     public Brief() {
     }
 
-    public LocalDateTime getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
