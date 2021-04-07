@@ -1,5 +1,7 @@
 package com.team.netch.admin;
 
+import com.team.netch.brief.Brief;
+import com.team.netch.brief.BriefService;
 import com.team.netch.feedback.Feedback;
 import com.team.netch.feedback.FeedbackService;
 import com.team.netch.frontapi.imageContent.ImageContentService;
@@ -21,15 +23,18 @@ public class AdminController {
     private final ImageContentService imageContentService;
     private final FeedbackService feedbackService;
     private final AppUserService appUserService;
+    private final BriefService briefService;
 
     public AdminController(TextContentService textContentService,
                            ImageContentService imageContentService,
                            FeedbackService feedbackService,
-                           AppUserService appUserService) {
+                           AppUserService appUserService,
+                           BriefService briefService) {
         this.textContentService = textContentService;
         this.imageContentService = imageContentService;
         this.feedbackService = feedbackService;
         this.appUserService = appUserService;
+        this.briefService = briefService;
     }
 
     @GetMapping
@@ -114,6 +119,28 @@ public class AdminController {
 
     /*_____________________________
      * END USERS SECTION
+     * _____________________________*/
+
+    /*_____________________________
+     * BRIEF SECTION
+     * _____________________________*/
+
+    @GetMapping(path = "briefs")
+    public List<Brief> showBriefs(){
+        return briefService.getAll();
+    }
+
+    @GetMapping(path = "briefs/active")
+    public List<Brief> showActiveBriefs(){
+        return briefService.getActive();
+    }
+    @GetMapping(path = "briefs/notactive")
+    public List<Brief> showNotActiveBriefs(){
+        return briefService.getNotActive();
+    }
+
+    /*_____________________________
+     * END BRIEF SECTION
      * _____________________________*/
 
 }

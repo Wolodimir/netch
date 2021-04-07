@@ -3,6 +3,7 @@ package com.team.netch.brief;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -32,12 +33,13 @@ public class Brief {
     private String logo;
     private String content;
     private String sections;
+    private LocalDateTime createdAt;
+    private Boolean status = true;
 
-    public Brief(String name, String email, String phone,
-                 String goals, String requirements, String results,
-                 String limitations, String assumptions, String kindOfActivity,
-                 String design, String site, String products, String services,
-                 String logo, String content, String sections) {
+    public Brief(String name, String email, String phone, String goals, String requirements,
+                 String results, String limitations, String assumptions, String kindOfActivity,
+                 String design, String site, String products, String services, String logo,
+                 String content, String sections, LocalDateTime createdAt) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -54,14 +56,37 @@ public class Brief {
         this.logo = logo;
         this.content = content;
         this.sections = sections;
+        this.createdAt = createdAt;
     }
 
-    public Brief(Long id, String name, String email,
-                 String phone, String goals, String requirements,
-                 String results, String limitations, String assumptions,
-                 String kindOfActivity, String design,
-                 String site, String products, String services,
-                 String logo, String content, String sections) {
+    public Brief(String name, String email, String phone, String goals, String requirements,
+                 String results, String limitations, String assumptions, String kindOfActivity,
+                 String design, String site, String products, String services, String logo,
+                 String content, String sections, LocalDateTime createdAt, Boolean status) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.goals = goals;
+        this.requirements = requirements;
+        this.results = results;
+        this.limitations = limitations;
+        this.assumptions = assumptions;
+        this.kindOfActivity = kindOfActivity;
+        this.design = design;
+        this.site = site;
+        this.products = products;
+        this.services = services;
+        this.logo = logo;
+        this.content = content;
+        this.sections = sections;
+        this.createdAt = createdAt;
+        this.status = status;
+    }
+
+    public Brief(Long id, String name, String email, String phone, String goals,
+                 String requirements, String results, String limitations, String assumptions,
+                 String kindOfActivity, String design, String site, String products, String services,
+                 String logo, String content, String sections, LocalDateTime createdAt, Boolean status) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -79,31 +104,27 @@ public class Brief {
         this.logo = logo;
         this.content = content;
         this.sections = sections;
+        this.createdAt = createdAt;
+        this.status = status;
     }
 
     public Brief() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Brief brief = (Brief) o;
-        return Objects.equals(name, brief.name) && Objects.equals(email, brief.email)
-                && Objects.equals(phone, brief.phone) && Objects.equals(goals, brief.goals)
-                && Objects.equals(requirements, brief.requirements) && Objects.equals(results, brief.results)
-                && Objects.equals(limitations, brief.limitations)
-                && Objects.equals(assumptions, brief.assumptions)
-                && Objects.equals(kindOfActivity, brief.kindOfActivity) && Objects.equals(design, brief.design)
-                && Objects.equals(site, brief.site) && Objects.equals(products, brief.products)
-                && Objects.equals(services, brief.services) && Objects.equals(logo, brief.logo)
-                && Objects.equals(content, brief.content) && Objects.equals(sections, brief.sections);
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, email, phone, goals, requirements, results, limitations,
-                assumptions, kindOfActivity, design, site, products, services, logo, content, sections);
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Long getId() {
