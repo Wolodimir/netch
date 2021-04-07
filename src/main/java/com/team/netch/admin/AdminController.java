@@ -97,6 +97,11 @@ public class AdminController {
         return feedbackService.getAllActiveFeedback();
     }
 
+    @GetMapping(path = "feedback/all")
+    public List<Feedback> getAllFeedback(){
+        return feedbackService.getAllFeedback();
+    }
+
     @DeleteMapping(path = "feedback/{id}")
     public Long deleteFeedback(@PathVariable Long id){
         feedbackService.offFeedbackById(id);

@@ -18,7 +18,7 @@ public class BriefService {
     }
 
     public void save(Brief brief) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss yyyy-MM-dd", Locale.US);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy", Locale.US);
         LocalDateTime strLocalDate = LocalDateTime.now();
         String localDate = strLocalDate.format(formatter);
         brief.setCreatedAt(localDate);

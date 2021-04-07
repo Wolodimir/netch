@@ -20,7 +20,7 @@ public class FeedbackService {
 
     public String saveFeedback(Feedback feedback){
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss yyyy-MM-dd", Locale.US);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy", Locale.US);
         LocalDateTime strLocalDate = LocalDateTime.now();
         String localDate = strLocalDate.format(formatter);
         feedback.setCreatedAt(localDate);
@@ -39,5 +39,9 @@ public class FeedbackService {
         Feedback feedback = feedbackRepo.findById(id).get();
         feedback.setActive(false);
         feedbackRepo.save(feedback);
+    }
+
+    public List<Feedback> getAllFeedback() {
+        return feedbackRepo.findAll();
     }
 }
