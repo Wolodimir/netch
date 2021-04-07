@@ -53,9 +53,9 @@ public class AdminController {
     }
 
     @DeleteMapping(path = "textContent/{id}")
-    public String deleteTextContent(@PathVariable Long id){
+    public Long deleteTextContent(@PathVariable Long id){
         textContentService.deleteTextContentById(id);
-        return "deleted " + id;
+        return id;
     }
 
     /*_____________________________
@@ -78,9 +78,9 @@ public class AdminController {
     }
 
     @DeleteMapping(path = "imageContent/{id}")
-    public String deleteImageContent(@PathVariable Long id){
+    public Long deleteImageContent(@PathVariable Long id){
         imageContentService.deleteImageContentById(id);
-        return "deleted " + id;
+        return id;
     }
 
 
@@ -98,9 +98,9 @@ public class AdminController {
     }
 
     @DeleteMapping(path = "feedback/{id}")
-    public String deleteFeedback(@PathVariable Long id){
+    public Long deleteFeedback(@PathVariable Long id){
         feedbackService.offFeedbackById(id);
-        return "deleted " + id;
+        return id;
     }
 
 
@@ -137,6 +137,12 @@ public class AdminController {
     @GetMapping(path = "briefs/notactive")
     public List<Brief> showNotActiveBriefs(){
         return briefService.getNotActive();
+    }
+
+    @DeleteMapping(path = "briefs/{id}")
+    public Long deactivate(@PathVariable Long id){
+        briefService.deactivate(id);
+        return id;
     }
 
     /*_____________________________

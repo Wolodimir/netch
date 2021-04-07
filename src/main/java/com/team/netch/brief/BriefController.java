@@ -16,6 +16,7 @@ public class BriefController {
 
     @PostMapping
     public String addBrief(@RequestBody Brief brief){
+
         briefService.save(brief);
 
         return "Спасибо, что заполнили бриф!";
