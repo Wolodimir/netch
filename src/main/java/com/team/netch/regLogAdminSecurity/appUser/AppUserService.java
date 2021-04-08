@@ -39,8 +39,8 @@ public class AppUserService implements UserDetailsService {
     public String signUpUser(AppUser user){
         boolean userExists = appUserRepo.findByEmail(user.getEmail()).isPresent();
         if(userExists){
-            //TODO chek of attributes are the same and
-            //TODO if email not confirmed send confirmation email
+            //chek of attributes are the same and
+            //if email not confirmed send confirmation email
 
             throw new IllegalStateException("email already taken");
         }
