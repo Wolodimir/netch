@@ -1,6 +1,8 @@
 package com.team.netch.progress;
 
 import com.team.netch.brief.Brief;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -12,9 +14,9 @@ public class Progress {
     private Long id;
 
     @OneToOne
+    //@OnDelete(action = OnDeleteAction.CASCADE)
     private Brief userBrief;
 
-    //TT - Technical task
     private Boolean brief;
     private Boolean technicalTask;
     private Boolean prototype;

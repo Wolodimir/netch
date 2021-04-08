@@ -1,4 +1,4 @@
-package com.team.netch.appConfig;
+package com.team.netch.corsConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-public class WebConfig {
+public class CorsConfig {
 
     @Bean
     public WebMvcConfigurer corsConfigurer(){

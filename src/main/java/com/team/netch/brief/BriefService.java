@@ -1,5 +1,7 @@
 package com.team.netch.brief;
 
+import com.team.netch.progress.Progress;
+import com.team.netch.progress.ProgressRepo;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,9 +14,11 @@ import java.util.Optional;
 public class BriefService {
 
     private final BriefRepo briefRepo;
+    private final ProgressRepo progressRepo;
 
-    public BriefService(BriefRepo briefRepo) {
+    public BriefService(BriefRepo briefRepo, ProgressRepo progressRepo) {
         this.briefRepo = briefRepo;
+        this.progressRepo = progressRepo;
     }
 
     public void save(Brief brief) {
@@ -23,7 +27,12 @@ public class BriefService {
         String localDate = strLocalDate.format(formatter);
         brief.setCreatedAt(localDate);
 
+        Progress progress = new Progress();
+        progress.setUserBrief(brief);
+
         briefRepo.save(brief);
+
+        progressRepo.save(progress);
     }
 
     public List<Brief> getAll() {
