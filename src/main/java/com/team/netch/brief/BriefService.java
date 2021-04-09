@@ -34,7 +34,7 @@ public class BriefService {
         briefRepo.save(brief);
 
         progressRepo.save(progress);
-        return "Netch-" + progress.getId();
+        return  progress.getId().toString();
     }
 
     public List<Brief> getAll() {
