@@ -29,6 +29,7 @@ public class Brief {
     private String services;
     private String logo;
     private String content;
+    @Column(columnDefinition = "text")
     private String sections;
     private String createdAt;
     private Boolean status = true;

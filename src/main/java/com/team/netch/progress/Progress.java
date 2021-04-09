@@ -17,14 +17,14 @@ public class Progress {
     //@OnDelete(action = OnDeleteAction.CASCADE)
     private Brief userBrief;
 
-    private Boolean brief;
-    private Boolean technicalTask;
-    private Boolean prototype;
-    private Boolean siteModel;
-    private Boolean frontBack;
-    private Boolean testing;
-    private Boolean payment;
-    private Boolean result;
+    private Boolean brief = false;
+    private Boolean technicalTask = false;
+    private Boolean prototype = false;
+    private Boolean siteModel = false;
+    private Boolean frontBack = false;
+    private Boolean testing = false;
+    private Boolean payment = false;
+    private Boolean result = false;
 
 
     public Progress(Brief userBrief, Boolean brief, Boolean technicalTask,

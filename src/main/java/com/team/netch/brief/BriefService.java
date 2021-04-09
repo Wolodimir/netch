@@ -21,7 +21,7 @@ public class BriefService {
         this.progressRepo = progressRepo;
     }
 
-    public void save(Brief brief) {
+    public String save(Brief brief) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy", Locale.US);
         LocalDateTime strLocalDate = LocalDateTime.now();
         String localDate = strLocalDate.format(formatter);
@@ -29,10 +29,12 @@ public class BriefService {
 
         Progress progress = new Progress();
         progress.setUserBrief(brief);
+        progress.setBrief(true);
 
         briefRepo.save(brief);
 
         progressRepo.save(progress);
+        return "Netch-" + progress.getId();
     }
 
     public List<Brief> getAll() {
