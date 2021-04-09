@@ -30,6 +30,8 @@ public class ProgressService {
                 break;
             case "testing" : progress.setTesting(true);
                 break;
+            case "payment" : progress.setPayment(true);
+                break;
             case "result" : progress.setResult(true);
                 break;
         }
