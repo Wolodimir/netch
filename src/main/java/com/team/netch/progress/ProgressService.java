@@ -48,4 +48,8 @@ public class ProgressService {
     public List<Progress> getAll() {
         return progressRepo.findAll();
     }
+
+    public List<Progress> getActive() {
+        return progressRepo.findProgressByUserBriefStatusEquals(true);
+    }
 }

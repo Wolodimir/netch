@@ -148,6 +148,7 @@ public class AdminController {
     public List<Brief> showActiveBriefs(){
         return briefService.getActive();
     }
+
     @GetMapping(path = "briefs/notactive")
     public List<Brief> showNotActiveBriefs(){
         return briefService.getNotActive();
@@ -178,6 +179,11 @@ public class AdminController {
         progressService.changeProgress(parameter, Long.parseLong(id));
 
         return "Changed";
+    }
+
+    @GetMapping("progress/active")
+    public List<Progress> getActiveProgress(){
+        return progressService.getActive();
     }
 
     /*_____________________________
