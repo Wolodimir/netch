@@ -2,6 +2,7 @@ package com.team.netch.feedback;
 
 import org.springframework.stereotype.Service;
 
+import com.team.netch.feedback.Feedback;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

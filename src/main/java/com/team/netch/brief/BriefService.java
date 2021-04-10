@@ -55,4 +55,8 @@ public class BriefService {
         brief.setStatus(false);
         briefRepo.save(brief);
     }
+
+    public Brief getById(Long id) {
+        return briefRepo.findById(id).orElseThrow(() -> new IllegalStateException("brief not found"));
+    }
 }

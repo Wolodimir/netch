@@ -14,7 +14,7 @@ public class ProgressService {
     }
 
     public Progress getProgressById(Long id){
-        return progressRepo.findById(id).orElse(new Progress());
+        return progressRepo.findById(id).orElseThrow(() -> new IllegalStateException("progress not found"));
     }
 
     public void changeProgress(String parameter, Long id){

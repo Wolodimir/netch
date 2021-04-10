@@ -139,6 +139,11 @@ public class AdminController {
         return briefService.getAll();
     }
 
+    @GetMapping(path = "briefs/{id}")
+    public Brief getOne(@PathVariable Long id){
+        return briefService.getById(id);
+    }
+
     @GetMapping(path = "briefs/active")
     public List<Brief> showActiveBriefs(){
         return briefService.getActive();

@@ -1,7 +1,6 @@
 package com.team.netch.feedback;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class Feedback {
@@ -10,13 +9,9 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition="text")
     private String name;
-    @Column(columnDefinition="text")
     private String email;
-    @Column(columnDefinition="text")
     private String phone;
-    @Column(columnDefinition="text")//
     private String createdAt;
     private Boolean active = true;
 
