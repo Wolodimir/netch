@@ -60,7 +60,7 @@ public class RegistrationService {
         String link = "http://localhost:8080/api/registration/confirm?token=" + token;
 
         //emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
-        return "token";
+        return token;
     }
     public String riseUserRole(String email, String adminKey){
         if(adminKey.equals(riseUserKey)){

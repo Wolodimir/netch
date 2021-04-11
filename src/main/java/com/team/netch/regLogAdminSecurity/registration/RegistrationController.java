@@ -14,8 +14,8 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String register(@RequestBody RegistrationRequest registrationRequest){
-        return registrationService.register(registrationRequest);
+    public void register(@RequestBody RegistrationRequest registrationRequest){
+            registrationService.register(registrationRequest);
     }
 
     @PostMapping("rise")

@@ -41,19 +41,13 @@ public class AdminController {
         this.progressService = progressService;
     }
 
-    @GetMapping
-    public String adminPage(){
-        return "Something administrative";
-    }
-
     /*_____________________________
     * TEXT CONTENT SECTION
     * _____________________________*/
 
     @PostMapping(path = "textContent/add")
-    public String addTextContent(@RequestBody TextContent textContent){
+    public void addTextContent(@RequestBody TextContent textContent){
         textContentService.save(textContent);
-        return "saved";
     }
 
     @DeleteMapping(path = "textContent/{id}")
@@ -72,13 +66,12 @@ public class AdminController {
      * _____________________________*/
 
     @PostMapping(path = "imageContent/add")
-    public String addImageContent(@RequestParam MultipartFile multipartFile,
+    public void addImageContent(@RequestParam MultipartFile multipartFile,
                                   @RequestParam String name,
                                   @RequestParam String header,
                                   @RequestParam String body){
 
         imageContentService.saveImageContent(multipartFile, name, header, body);
-        return "saved";
     }
 
     @DeleteMapping(path = "imageContent/{id}")
@@ -174,11 +167,8 @@ public class AdminController {
     }
 
     @PostMapping("progress/change")
-    public String changeProgress(@RequestParam String parameter, @RequestParam String id){
-
+    public void changeProgress(@RequestParam String parameter, @RequestParam String id){
         progressService.changeProgress(parameter, Long.parseLong(id));
-
-        return "Changed";
     }
 
     @GetMapping("progress/active")
