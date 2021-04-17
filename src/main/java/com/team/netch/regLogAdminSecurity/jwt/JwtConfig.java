@@ -1,5 +1,6 @@
 package com.team.netch.regLogAdminSecurity.jwt;
 
+
 import com.google.common.net.HttpHeaders;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

@@ -23,7 +23,7 @@ public class BriefService {
 
     public String save(Brief brief) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy", Locale.US);
-        LocalDateTime strLocalDate = LocalDateTime.now();
+        LocalDateTime strLocalDate = LocalDateTime.now().plusHours(4);
         String localDate = strLocalDate.format(formatter);
         brief.setCreatedAt(localDate);
 

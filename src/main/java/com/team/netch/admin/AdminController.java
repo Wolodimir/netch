@@ -142,7 +142,7 @@ public class AdminController {
         return briefService.getActive();
     }
 
-    @GetMapping(path = "briefs/notactive")
+    @GetMapping(path = "briefs/notActive")
     public List<Brief> showNotActiveBriefs(){
         return briefService.getNotActive();
     }

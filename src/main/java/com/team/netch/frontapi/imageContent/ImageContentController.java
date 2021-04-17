@@ -15,7 +15,6 @@ public class ImageContentController {
         this.imageContentService = imageContentService;
     }
 
-
     @GetMapping("allImageContent")
     public List<ImageContent> getAllImageContent(){
         return imageContentService.getAllImageContent();

@@ -62,6 +62,7 @@ public class RegistrationService {
         //emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
         return token;
     }
+
     public String riseUserRole(String email, String adminKey){
         if(adminKey.equals(riseUserKey)){
             Optional<AppUser> userByEmail = appUserRepo.findByEmail(email);
@@ -104,6 +105,7 @@ public class RegistrationService {
         //appUserService.enableUser(confirmationToken.getAppUser().getEmail());
         return "confirmed";
     }
+
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
                 "\n" +

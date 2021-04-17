@@ -15,7 +15,7 @@ public class BriefController {
 
 
     @PostMapping
-    public void addBrief(@RequestBody Brief brief){
-        briefService.save(brief);
+    public String addBrief(@RequestBody Brief brief) {
+        return briefService.save(brief);
     }
 }
