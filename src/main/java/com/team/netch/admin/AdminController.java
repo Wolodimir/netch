@@ -45,7 +45,7 @@ public class AdminController {
     * TEXT CONTENT SECTION
     * _____________________________*/
 
-    @PostMapping(path = "textContent/add")
+    /*@PostMapping(path = "textContent/add")
     public void addTextContent(@RequestBody TextContent textContent){
         textContentService.save(textContent);
     }
@@ -54,7 +54,7 @@ public class AdminController {
     public Long deleteTextContent(@PathVariable Long id){
         textContentService.deleteTextContentById(id);
         return id;
-    }
+    }*/
 
     /*_____________________________
      * END TEXT CONTENT SECTION
@@ -65,7 +65,7 @@ public class AdminController {
      * IMAGE CONTENT SECTION
      * _____________________________*/
 
-    @PostMapping(path = "imageContent/add")
+    /*@PostMapping(path = "imageContent/add")
     public void addImageContent(@RequestParam MultipartFile multipartFile,
                                   @RequestParam String name,
                                   @RequestParam String header,
@@ -78,7 +78,7 @@ public class AdminController {
     public Long deleteImageContent(@PathVariable Long id){
         imageContentService.deleteImageContentById(id);
         return id;
-    }
+    }*/
 
 
     /*_____________________________
