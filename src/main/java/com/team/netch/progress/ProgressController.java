@@ -19,4 +19,9 @@ public class ProgressController {
         return progressService.getProgressById(id);
     }
 
+    @GetMapping("{phone}")
+    public Progress progress(@PathVariable String phone){
+        return progressService.getProgressByPhone(phone);
+    }
+
 }

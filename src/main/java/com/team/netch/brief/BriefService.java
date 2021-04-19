@@ -3,6 +3,7 @@ package com.team.netch.brief;
 import com.team.netch.progress.Progress;
 import com.team.netch.progress.ProgressRepo;
 import com.team.netch.regLogAdminSecurity.email.EmailService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,12 +17,12 @@ public class BriefService {
 
     private final BriefRepo briefRepo;
     private final ProgressRepo progressRepo;
-    private final EmailService emailService;
+    private final BriefEmailService briefEmailService;
 
-    public BriefService(BriefRepo briefRepo, ProgressRepo progressRepo, EmailService emailService) {
+    public BriefService(BriefRepo briefRepo, ProgressRepo progressRepo, BriefEmailService briefEmailService) {
         this.briefRepo = briefRepo;
         this.progressRepo = progressRepo;
-        this.emailService = emailService;
+        this.briefEmailService = briefEmailService;
     }
 
     public String save(Brief brief) {
@@ -38,7 +39,14 @@ public class BriefService {
 
         progressRepo.save(progress);
 
+
+        /*
+            This for future emailing every user about brief
         emailService.send(brief.getEmail(), emailBuilder(brief.getName(), brief.getId()));
+        */
+
+        briefEmailService.send("netchweb@gmail.com", "Заполнили новый бриф.");
+        briefEmailService.send("netch-web@mail.ru", "Заполнили новый бриф.");
 
         return  progress.getId().toString();
     }

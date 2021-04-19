@@ -1,9 +1,8 @@
 package com.team.netch.feedback;
 
+import com.team.netch.brief.BriefEmailService;
 import org.springframework.stereotype.Service;
 
-import com.team.netch.feedback.Feedback;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -13,9 +12,11 @@ import java.util.Locale;
 public class FeedbackService {
 
     private final FeedbackRepo feedbackRepo;
+    private final BriefEmailService briefEmailService;
 
-    public FeedbackService(FeedbackRepo feedbackRepo) {
+    public FeedbackService(FeedbackRepo feedbackRepo, BriefEmailService briefEmailService) {
         this.feedbackRepo = feedbackRepo;
+        this.briefEmailService = briefEmailService;
     }
 
 
@@ -27,6 +28,9 @@ public class FeedbackService {
         feedback.setCreatedAt(localDate);
 
         feedbackRepo.save(feedback);
+
+        briefEmailService.send("netchweb@gmail.ru", "Оставили запрос на обратную связь.");
+        briefEmailService.send("netch-web@mail.ru", "Оставили запрос на обратную связь.");
 
         return "saved";
     }

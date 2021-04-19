@@ -17,6 +17,11 @@ public class ProgressService {
         return progressRepo.findById(id).orElseThrow(() -> new IllegalStateException("progress not found"));
     }
 
+    public Progress getProgressByPhone(String phone){
+        return progressRepo.findProgressByUserBriefPhoneEquals(phone)
+                .orElseThrow(() -> new IllegalStateException("Brief with phone: " + phone + " does not exists."));
+    }
+
     public void changeProgress(String parameter, Long id){
         Progress progress = progressRepo.findById(id).get();
         switch (parameter){
