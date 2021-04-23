@@ -1,9 +1,7 @@
-package com.team.netch.brief;
+package com.team.netch.brief.email;
 
-import com.team.netch.regLogAdminSecurity.email.EmailSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Primary;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -13,10 +11,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 @Service
-@Primary
-public class BriefEmailService implements EmailSender {
-
-    //TODO change target method Primary
+public class BriefEmailService implements BriefEmailSender {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(BriefEmailService.class);
 
@@ -26,18 +21,15 @@ public class BriefEmailService implements EmailSender {
         this.mailSender = mailSender;
     }
 
-
-
-
     @Override
     @Async
-    public void send(String to, String email) {
+    public void send(String to, String email, String subject) {
         try{
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
-            helper.setSubject("Есть что проверить на сайте");
+            helper.setSubject(subject);
             helper.setFrom("netchweb@gmail.com");
             mailSender.send(mimeMessage);
         }catch (MessagingException e){

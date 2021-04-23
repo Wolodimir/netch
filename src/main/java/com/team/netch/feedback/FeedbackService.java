@@ -1,6 +1,6 @@
 package com.team.netch.feedback;
 
-import com.team.netch.brief.BriefEmailService;
+import com.team.netch.brief.email.BriefEmailService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -29,9 +29,21 @@ public class FeedbackService {
 
         feedbackRepo.save(feedback);
 
-        briefEmailService.send("netchweb@gmail.ru", "Оставили запрос на обратную связь.");
-        briefEmailService.send("netch-web@mail.ru", "Оставили запрос на обратную связь.");
+        //Send notification to IVAN
+        briefEmailService.send("netchweb@gmail.com", "Оставили запрос на обратную связь.<br>"+
+                "Номер: " + feedback.getPhone()+"<br>"+
+                "Почта: " + feedback.getEmail()+"<br>"+
+                "Имя: " + feedback.getName(),
 
+                "Новый запрос на обратную связь");
+
+       /* briefEmailService.send("netch-web@mail.ru", "Оставили запрос на обратную связь.\n"+
+                        "Номер: " + feedback.getPhone()+"\n"+
+                        "Почта: " + feedback.getEmail()+"\n"+
+                        "Имя: " + feedback.getName(),
+
+                "Новый запрос на обратную связь");
+*/
         return "saved";
     }
 

@@ -1,11 +1,14 @@
 package com.team.netch.brief;
 
+import com.team.netch.brief.email.BriefEmailService;
 import com.team.netch.progress.Progress;
 import com.team.netch.progress.ProgressRepo;
 import com.team.netch.regLogAdminSecurity.email.EmailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -19,7 +22,9 @@ public class BriefService {
     private final ProgressRepo progressRepo;
     private final BriefEmailService briefEmailService;
 
-    public BriefService(BriefRepo briefRepo, ProgressRepo progressRepo, BriefEmailService briefEmailService) {
+    public BriefService(BriefRepo briefRepo,
+                        ProgressRepo progressRepo,
+                        BriefEmailService briefEmailService) {
         this.briefRepo = briefRepo;
         this.progressRepo = progressRepo;
         this.briefEmailService = briefEmailService;
@@ -45,8 +50,25 @@ public class BriefService {
         emailService.send(brief.getEmail(), emailBuilder(brief.getName(), brief.getId()));
         */
 
-        briefEmailService.send("netchweb@gmail.com", "Заполнили новый бриф.");
-        briefEmailService.send("netch-web@mail.ru", "Заполнили новый бриф.");
+        //Send notification to IVAN
+        briefEmailService.send("netchweb@gmail.com",
+                "Заполнили новый бриф.",
+                "Есть что проверить на сайте");
+        briefEmailService.send("netch-web@mail.ru",
+                "Заполнили новый бриф.",
+                "Есть что проверить на сайте");
+
+        //Send notification to User
+        briefEmailService.send(brief.getEmail(), "Здравствуйте! Мы рады приветствовать вас на нашем сайте! " +
+                        "Все данные брифа уже отправлены нашей команде для рассмотрения, мы скоро с вами свяжемся " +
+                        "чтобы обсудить детали. Напоминаем, что вашему заказу присвоен трек-номер для отслеживания " +
+                        "прогресса, который вы всегда сможете увидеть на нашем сайте! Ваш номер: NETCH-" + brief.getId() +
+                        ". Вы можете подробнее ознакомиться с нашей командой и услугами через презентацию, " +
+                        "которая приложена ниже.",
+
+                "Спасибо, что заказали и всё такое (Надо придумать)");
+
+
 
         return  progress.getId().toString();
     }
