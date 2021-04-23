@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+/*@RestController
 @CrossOrigin
-@RequestMapping(path = "api/front")
+@RequestMapping(path = "api/front")*/
 public class ImageContentController {
 
     private final ImageContentService imageContentService;

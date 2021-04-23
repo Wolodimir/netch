@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+/*@Repository*/
 public interface ImageContentRepo extends JpaRepository<ImageContent, Long> {
     List<ImageContent> findByName(String name);
 }

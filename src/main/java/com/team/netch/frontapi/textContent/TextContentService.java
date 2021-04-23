@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+/*@Service*/
 public class TextContentService {
     private final TextContentRepo textContentRepo;
 

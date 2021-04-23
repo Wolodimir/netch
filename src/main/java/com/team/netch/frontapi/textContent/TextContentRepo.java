@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
-@Repository
+/*@Repository*/
 public interface TextContentRepo extends JpaRepository<TextContent, Long> {
     List<TextContent> findByName(String name);
 }

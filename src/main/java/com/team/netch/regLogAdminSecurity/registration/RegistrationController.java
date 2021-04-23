@@ -27,9 +27,9 @@ public class RegistrationController {
     public String deleteUser(@RequestParam String email, @RequestParam String adminKey){
         return registrationService.deleteUserByEmail(email, adminKey);
     }
-
-    /*@GetMapping(path = "confirm")
+    //todo check
+    @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token){
         return registrationService.confirmToken(token);
-    }*/
+    }
 }

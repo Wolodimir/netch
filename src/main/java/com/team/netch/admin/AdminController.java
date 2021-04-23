@@ -4,15 +4,11 @@ import com.team.netch.brief.Brief;
 import com.team.netch.brief.BriefService;
 import com.team.netch.feedback.Feedback;
 import com.team.netch.feedback.FeedbackService;
-import com.team.netch.frontapi.imageContent.ImageContentService;
-import com.team.netch.frontapi.textContent.TextContent;
-import com.team.netch.frontapi.textContent.TextContentService;
 import com.team.netch.progress.Progress;
 import com.team.netch.progress.ProgressService;
 import com.team.netch.regLogAdminSecurity.appUser.AppUser;
 import com.team.netch.regLogAdminSecurity.appUser.AppUserService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -21,20 +17,14 @@ import java.util.List;
 @CrossOrigin
 public class AdminController {
 
-    private final TextContentService textContentService;
-    private final ImageContentService imageContentService;
     private final FeedbackService feedbackService;
     private final AppUserService appUserService;
     private final BriefService briefService;
     private final ProgressService progressService;
 
-    public AdminController(TextContentService textContentService,
-                           ImageContentService imageContentService,
-                           FeedbackService feedbackService,
+    public AdminController(FeedbackService feedbackService,
                            AppUserService appUserService,
                            BriefService briefService, ProgressService progressService) {
-        this.textContentService = textContentService;
-        this.imageContentService = imageContentService;
         this.feedbackService = feedbackService;
         this.appUserService = appUserService;
         this.briefService = briefService;

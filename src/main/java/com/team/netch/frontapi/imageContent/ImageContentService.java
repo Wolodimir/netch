@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+/*@Service*/
 public class ImageContentService {
 
     private final AmazonClient amazonClient;

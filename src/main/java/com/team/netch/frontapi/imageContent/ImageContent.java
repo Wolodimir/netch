@@ -2,7 +2,7 @@ package com.team.netch.frontapi.imageContent;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class ImageContent {
 
     @Id

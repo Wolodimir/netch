@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+/*@RestController
 @RequestMapping(path = "api/front")
-@CrossOrigin
+@CrossOrigin*/
 public class TextContentController {
     /*
     * This controller is public and have just GET methods.

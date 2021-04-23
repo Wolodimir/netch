@@ -60,7 +60,8 @@ public class AppUserService implements UserDetailsService {
         );
 
         //No need to make confirmation token table
-        //confirmationTokenService.saveConfirmationToken(confirmationToken);
+        //Todo check
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
 
         return token;
     }
@@ -69,7 +70,8 @@ public class AppUserService implements UserDetailsService {
         return appUserRepo.findAll();
     }
 
-    /*public int enableUser(String email) {
+    //Todo check
+    public int enableUser(String email) {
         return appUserRepo.enableAppUser(email);
-    }*/
+    }
 }

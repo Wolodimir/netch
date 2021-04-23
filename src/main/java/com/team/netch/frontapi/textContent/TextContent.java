@@ -2,7 +2,7 @@ package com.team.netch.frontapi.textContent;
 
 import javax.persistence.*;
 
-@Entity
+/*@Entity*/
 public class TextContent {
 
     @Id
