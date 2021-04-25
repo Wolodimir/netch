@@ -57,8 +57,8 @@ public class RegistrationService {
                 )
         );
         //verification link
-        String link = "http://netch-env-1.eba-2jpxc2x7.eu-central-1.elasticbeanstalk.com/api/registration/confirm?token=" + token;
-        //Todo check
+        String link = "http://netch-env-2.eu-central-1.elasticbeanstalk.com/api/registration/confirm?token=" + token;
+
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
         return token;
     }
@@ -103,7 +103,6 @@ public class RegistrationService {
 
         confirmationTokenService.setConfirmedAt(token);
 
-        //Todo check
         appUserService.enableUser(confirmationToken.getAppUser().getEmail());
         return "confirmed";
     }

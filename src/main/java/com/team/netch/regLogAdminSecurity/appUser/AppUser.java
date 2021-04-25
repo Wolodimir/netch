@@ -30,7 +30,6 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AppUserRole AppUserRole;
     private Boolean locked = false;
-    //Todo check
     private Boolean enabled = false;
 
     @Override

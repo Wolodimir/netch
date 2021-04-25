@@ -16,11 +16,16 @@ public class ConfirmationTokenService {
     public void saveConfirmationToken(ConfirmationToken token){
         confirmationTokenRepo.save(token);
     }
+
     public Optional<ConfirmationToken> getToken(String token) {
         return confirmationTokenRepo.findByToken(token);
     }
 
     public int setConfirmedAt(String token) {
         return confirmationTokenRepo.updateConfirmedAt(token, LocalDateTime.now());
+    }
+
+    public ConfirmationToken getByUserEmail(String email) {
+        return confirmationTokenRepo.findByAppUserEmail(email);
     }
 }

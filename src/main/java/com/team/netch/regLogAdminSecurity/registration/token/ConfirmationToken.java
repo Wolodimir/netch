@@ -1,6 +1,8 @@
 package com.team.netch.regLogAdminSecurity.registration.token;
 
 import com.team.netch.regLogAdminSecurity.appUser.AppUser;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -30,11 +32,12 @@ public class ConfirmationToken {
     private LocalDateTime expiresAt;
     private LocalDateTime confirmedAt;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(
             nullable = false,
             name = "user_id"
     )
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AppUser appUser;
 
     public ConfirmationToken(String token,
